@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+  #app{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+  }
+  </style>
+</head>
+<body>
+<div id="app">
+
+
+  
+  </div>
+<script>
+  
+
+
+  let inputText ='abcdefghijklmnopqrstuvwxyzæøå';
+  let vocals = "aeiouyæøå"
+
+  updateView()
+
+  function updateView() {
+    document.getElementById('app').innerHTML = /*html*/`
+
+    <input type="text" onchange="addTextandcountvocals(this)">
+
+    <div id="showInput">${inputText}</div>
+
+    <div id="counter">0</div>
+
+    <button onclick="countChars('${inputText}')">Tell vokaler</button>
+    `;
+  }
+
+    function countChars(text){
+      let count = 0;
+      for (index = 0; index < text.length; index++){
+        const aCharacter = text.charAt(index);
+        if (vocals.includes(aCharacter)) count ++;
+      }
+      document.getElementById("counter").innerHTML = count;
+      return count;
+      updateView()
+    }
+
+    function addTextandcountvocals(input){
+      inputText = input.value
+      updateView()
+    }
+  </script>
+</body>
+</html>
