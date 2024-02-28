@@ -24,9 +24,9 @@
 <script>
   
 
-
-  let inputText ='abcdefghijklmnopqrstuvwxyzæøå';
-  let vocals = "aeiouyæøå"
+  let inputTextReversed = '';
+  let inputText ='';
+  let vocals = "aeiouyæøå";
 
   updateView()
 
@@ -37,9 +37,13 @@
 
     <div id="showInput">${inputText}</div>
 
+    <div id="showInputReversed">${inputTextReversed}</div>
+
     <div id="counter">0</div>
 
     <button onclick="countChars('${inputText}')">Tell vokaler</button>
+
+    <button onclick="reverseInputText('${inputText}')">Reverser text</button>
     `;
   }
 
@@ -57,6 +61,14 @@
     function addTextandcountvocals(input){
       inputText = input.value
       updateView()
+    }
+
+
+    function reverseInputText(){
+      for(let snu = inputText.length -1; snu >= 0; snu--){
+        inputTextReversed = inputTextReversed + inputText[snu];
+           }
+           updateView()
     }
   </script>
 </body>
